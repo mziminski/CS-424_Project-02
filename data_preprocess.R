@@ -17,6 +17,10 @@ dfdata <- xlsx::read.xlsx(file, sheetName="PLNT18", as.data.frame=TRUE)
 # get column names
 colnames(dfdata)
 
+# Replace OFSL and OTHF with OTHER in MAIN_FUEL column
+dfdata$MAIN_FUEL[dfdata$MAIN_FUEL == "OFSL"] <- "OTHER"
+dfdata$MAIN_FUEL[dfdata$MAIN_FUEL == "OTHF"] <- "OTHER"
+
 # Calculate the percentage of the specific energy source of the total net gen
 dfdata["PERCENT_COAL_GEN"] <- round(dfdata["COAL_GEN"] / dfdata["NET_GEN"], digits=3) * 100
 dfdata["PERCENT_OIL_GEN"] <- round(dfdata["OIL_GEN"] / dfdata["NET_GEN"], digits=3) * 100
