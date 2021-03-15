@@ -2,7 +2,6 @@
 install.packages("xlsx")                                         
 library("xlsx")
 library(reshape2)
-library(leaflet)
 # Prevent numbers from going to Scientific Notation
 options(scipen = 999)
 
@@ -15,11 +14,7 @@ file = "egrid2018_data_v2.xlsx"
 # skip first row (col name descriptions)
 dfdata <- xlsx::read.xlsx(file, sheetName="PLNT18", as.data.frame=TRUE)
 # get column names
-colnames(dfdata)
-
-# Replace OFSL and OTHF with OTHER in MAIN_FUEL column
-dfdata$MAIN_FUEL[dfdata$MAIN_FUEL == "OFSL"] <- "OTHER"
-dfdata$MAIN_FUEL[dfdata$MAIN_FUEL == "OTHF"] <- "OTHER"
+# colnames(dfdata)
 
 # Calculate the percentage of the specific energy source of the total net gen
 dfdata["PERCENT_COAL_GEN"] <- round(dfdata["COAL_GEN"] / dfdata["NET_GEN"], digits=3) * 100
@@ -42,7 +37,7 @@ dfdata["PERCENT_RENEWABLE_GEN"] <- round(dfdata["NET_RENEWABLE_GEN"] / dfdata["N
 # from https://stackoverflow.com/questions/18142117/how-to-replace-nan-value-with-zero-in-a-huge-data-frame
 is.nan.data.frame <- function(x)
 do.call(cbind, lapply(x, is.nan))
-dfdata[is.nan(dfdata)] <- 0
+dfdata[is.nan(dfdata)] <- 0.0
 
 # Export df as XLSX
 write.xlsx(dfdata, "egrid2018_data_v2.xlsx", sheetName="PLNT18", row.names=FALSE, showNA=FALSE)

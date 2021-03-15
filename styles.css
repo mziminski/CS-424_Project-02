@@ -1,0 +1,100 @@
+input[type="number"] {
+  max-width: 80%;
+}
+
+div.outer {
+  position: fixed;
+  top: 41px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Customize fonts */
+body, label, input, button, select { 
+  font-family: 'Helvetica Neue', Helvetica!important;
+  font-weight: 200!important;
+}
+h1, h2, h3, h4 { 
+  font-family: 'Helvetica Neue', Helvetica!important;
+  font-weight: 400!important; 
+  padding-left:20Z;
+}
+
+p {
+  font-family: 'Helvetica Neue', Helvetica!important;
+  color:white;
+}
+
+.containerL {
+  position:relative;
+  top:0px;
+  left:0px;
+  height:100%!important;
+}
+
+.containerR {
+  position:relative;
+  top:0px;
+  right:0px;
+  height:100%!important;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  position:relative;
+  top:0px;
+  left:0px;
+  background-color: black ;
+  padding:0px 0px 0px 0px;
+  z-index:1;
+  height:92%!important;
+}
+
+.leaflet-popup {
+  white-space: pre-wrap!important;
+}
+
+.leaflet-control {
+  background:black!important;
+  color:white!important;
+  opacity:0.95;
+}
+
+.controls {
+  /* Appearance */
+  position:relative;
+  top:10px;
+  right:0px;
+  width:150px;
+  background:black;
+  color: white;
+  padding: 0px 20px 20px 20px;
+  cursor: move;
+  z-index:100;
+  /* Fade out while not hovering */
+  opacity: 0.45;
+  zoom: 0.9;
+  transition: opacity 250ms 500ms;
+}
+.controls:hover {
+  /* Fade in while hovering */
+  opacity: 1;
+  transition-delay: 0;
+  z-index:100;
+}
+
+.f-row {
+  padding:15px 0px 0px 0px !important;
+  z-index:10;
+}
+
+.drop-down-menu li {
+  z-index: auto;
+}
+
+.drop-down-menu ul {
+  z-index: auto;
+}
