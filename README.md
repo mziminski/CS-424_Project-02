@@ -1,6 +1,13 @@
 # CS-424_Project-02
 
-TODO: Write Project Description
+## Project Description
+
+In this project I build a ShinyApps.io dashboard (https://mzimin2.shinyapps.io/CS-424_Project-02/) to display the data from https://www.epa.gov/egrid/download-data. More specifically these files: egrid2018_data_v2.xlsx, egrid2010_data.xls, and egrid2000_plant.xls.
+
+### Project Objectives:
+1) Show the plant generation data for the state of Illinois. Allow the user to pick and choose which energy sources they want to view.
+2) Split the screen in half to have a Left/Right pane. Each pane needs to allow the user to be able to select a state and year to view. And there should be an option to be able to sync the check boxes between the 2 panes.
+3) The user should be able to see the whole continential US, zoomed respectivly, and be able to use the check boxes from part 1/2 and an additional sliders for the power generation ranges.
 
 ---
 
@@ -33,27 +40,22 @@ Go back to RStudio and in the file navigation pane (bottom right) navigate to th
 
 Do this first before trying the conda option, by adding the following line above the library(...) line of code.
 ```
-<br>install.packages("ggplot2")
-<br>install.packages("rgeos")
-<br>install.packages("ggmap")
-<br>install.packages("maps")
-<br>install.packages("mapdata")
-<br>install.packages("maptools")
-<br>install.packages("ggthemes")
-<br>install.packages("sp")
-<br>install.packages("stringr")
-<br>install.packages("plyr")
+library(purrr)
+library(dplyr)
+library(shiny)
+library(stringr)
+library(shinydashboard)
+library(shinythemes)
+library(reshape2)
+library(leaflet)
+library(leaflet.extras)
+library(DT)
 ```
 
-If the above doesn't work then use your local machine's terminal and type the following commands:
+If the above doesn't work then install the conflicting package(s) usign the below code block:
 
 ```
-<br>conda install -c conda-forge r-rgeos
-<br>conda install -c conda-forge r-ggmap
-<br>conda install -c conda-forge r-mapdata
-<br>conda install -c conda-forge r-maptools
-<br>conda install -c conda-forge r-ggthemes
-<br>conda install -c r r-maps
+install.packages("Package_Name")
 ```
 
 ## Running Program
