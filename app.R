@@ -1,9 +1,7 @@
 
 # libraries to include
-install.packages("xlsx")   
-install.packages('leaflet.extras')
-install.packages("shinythemes")
-library("xlsx")  
+# install.packages('leaflet.extras')
+# install.packages("shinythemes")
 # install.packages("dplyr")
 library(purrr)
 library(dplyr)
@@ -21,16 +19,16 @@ options(java.parameters = "-Xmx2000m")
 
 # Interested in rows: TYPE OF PRODUCER,ENERGY SOURCE equal to Total Electric Power Industry,Total
 # [You] should convert the STATE, TYPE OF PRODUCER, and ENERGY SOURCE to categorical values
-setwd("/Users/mziminski/Developer/School Projects/cs424/CS-424_Project-02/Data")
-file18 = "egrid2018_data_v2.xlsx"
-file10 = "egrid2010_data.xls"
-file00 = "egrid2000_plant.xls"
+# setwd("/Users/mziminski/Developer/School Projects/cs424/CS-424_Project-02/Data")
+file18 = "egrid2018_data_v2.csv"
+file10 = "egrid2010_data.csv"
+file00 = "egrid2000_plant.csv"
 # read data in as XSLX file then save as dataframe
-dfdata_18 <- xlsx::read.xlsx(file18, sheetName="PLNT18", as.data.frame=TRUE)
-dfdata_10 <- xlsx::read.xlsx(file10, sheetName="PLNT10", as.data.frame=TRUE)
-dfdata_00 <- xlsx::read.xlsx(file00, sheetName="PLNT00", as.data.frame=TRUE)
+dfdata_18 <- read.csv(file = file18, sep = ",")
+dfdata_10 <- read.csv(file = file10, sep = ",")
+dfdata_00 <- read.csv(file = file00, sep = ",")
 
-setwd("/Users/mziminski/Developer/School Projects/cs424/CS-424_Project-02/")
+# setwd("/Users/mziminski/Developer/School Projects/cs424/CS-424_Project-02/")
 
 # set the STATE column to a factor
 dfdata_18$STATE <- as.factor(dfdata_18$STATE)
@@ -66,8 +64,8 @@ myColors <- c("#70FFF8", "#628395", "#E7D7C1", "#8E443D", "#035E7B", "#36827F",
 # a function that will return a color based on fuel passed to it, useful for keeping colors of fuels in sync everywhere
 pal <- colorFactor(palette=myColors, domain=cat1[-c(1)])
 # load different maps by CartoDB, but failed to solve reloading RESET when new fuel category selected
-cartoDB <- grep("^CartoDB", providers, value = TRUE)
-cartoDB[c(2,3,5,6)]
+# cartoDB <- grep("^CartoDB", providers, value = TRUE)
+# cartoDB[c(2,3,5,6)]
 
 # *** EXTRA and NOT NEEDED ***
 # Might be used in future Project, So keeping it here
@@ -412,7 +410,7 @@ server = function(input, output) {
   # Render/setup the leaflet map for part 1
   output$part1_map <- renderLeaflet({ 
     data <- dfdata_18_NonDecom %>% filter(STATE == "IL")
-    get_map(data, input$part1_Select1, input$part1_Select2, "IL", map_types)
+    get_map(data, input$part1_Select1, input$part1_Select2, "IL")
   })
   # Render/setup the leaflet map for part 2
   output$part2_map1 <- renderLeaflet({ 
